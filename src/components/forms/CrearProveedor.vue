@@ -1,3 +1,5 @@
+<!---NO ES pasar a CreateProvide-->
+
 <template>
     <form class="mt-3 w-full">
         <div class="divider">Informacion del Proveedor</div>
@@ -6,7 +8,7 @@
                 <label class="font-bold pr-4">
                     Nombre(s)*
                 </label>
-                <input v-bind="name" type="text" class="input input-sm uppercase w-full">
+                <input v-bind="name" type="text" class="input-bordered input input-sm uppercase w-full">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
                 </label>
@@ -15,7 +17,7 @@
                 <label class="font-bold pr-4">
                     Email*
                 </label>
-                <input type="email" class="input input-sm w-full" v-bind="email">
+                <input type="email" class="input-bordered input input-sm w-full" v-bind="email">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.email }}</span>
                 </label>
@@ -24,7 +26,7 @@
                 <label class="font-bold pr-4">
                     Telefono
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="phone">
+                <input type="text" class="input input-bordered  input-sm w-full" v-bind="phone">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.phone }}</span>
                 </label>

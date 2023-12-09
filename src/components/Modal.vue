@@ -1,5 +1,5 @@
 <template>
-    <div ref="modal" v-if="show" class="fixed inset-0 flex items-center justify-center bg-slate-800 z-10 background">
+    <div ref="modal" v-if="show" class="fixed inset-0  flex items-center justify-center bg-slate-800 z-10 background">
         <div :class="['bg-white p-4 rounded-lg shadow-lg', getSizeClass()]">
             <slot class="" name="closeModal"></slot>
 
@@ -41,7 +41,7 @@ function closeOnEscapeListener(e) {
 function getSizeClass() {
     switch (props.size) {
         case 'lg':
-            return 'w-3/5'
+            return 'w-2/7'
         case 'md':
             return 'w-2/5';
         default:

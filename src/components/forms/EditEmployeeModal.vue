@@ -6,7 +6,7 @@
                 <label class="font-bold pr-4">
                     Nombre completo*
                 </label>
-                <input v-bind="fullname" type="text" class="input input-sm uppercase w-full">
+                <input v-bind="fullname" type="text" class="input input-bordered   input-sm uppercase w-full">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.fullname }}</span>
                 </label>
@@ -16,7 +16,7 @@
                 <label class="font-bold pr-4">
                     Email*
                 </label>
-                <input type="email" class="input input-sm w-full" v-bind="email">
+                <input type="email" class="input input-bordered   input-sm w-full" v-bind="email">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.email }}</span>
                 </label>
@@ -25,7 +25,7 @@
                 <label class="font-bold pr-4">
                     Telefono
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="phone">
+                <input type="text" class="input input-bordered   input-sm w-full" v-bind="phone">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.phone }}</span>
                 </label>
@@ -34,7 +34,7 @@
                 <label class="font-bold pr-4">
                     CURP*
                 </label>
-                <input type="text" class="input input-sm w-full uppercase" v-bind="curp" maxlength="18">
+                <input type="text" class="input  input-bordered  input-sm w-full uppercase" v-bind="curp" maxlength="18">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.curp }}</span>
                 </label>
@@ -43,7 +43,7 @@
                 <label class="font-bold pr-4">
                     RFC
                 </label>
-                <input type="text" class="input input-sm w-full uppercase" v-bind="rfc" maxlength="13">
+                <input type="text" class="input input-bordered   input-sm w-full uppercase" v-bind="rfc" maxlength="13">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.rfc }}</span>
                 </label>
@@ -52,7 +52,7 @@
                 <label class="font-bold pr-4">
                     Salario
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="salary">
+                <input type="number" class="input  input-bordered  input-sm w-full" v-bind="salary">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.salary }}</span>
                 </label>
@@ -66,7 +66,7 @@
                 <label class="font-bold pr-4">
                     Nombre de usuario*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="username">
+                <input type="text" class="input input-bordered   input-sm w-full" v-bind="username">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.username }}</span>
                 </label>
@@ -76,7 +76,7 @@
                 <label class="font-bold pr-4">
                     Contraseña*
                 </label>
-                <input type="password" class="input input-sm w-full" v-bind="password">
+                <input type="password" class="input  input-bordered  input-sm w-full" v-bind="password">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.password }}</span>
                 </label>
@@ -120,8 +120,8 @@ const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({
         email: yup.string().email().required(),
         phone: yup.number(),
         salary: yup.number().default(0),
-        rfc: yup.string(),
-        curp: yup.string().required(),
+        rfc: yup.string().length(13),
+        curp: yup.string().length(18).required(),
         username: yup.string().required(),
         password: yup.string().min(8).required()
     }),

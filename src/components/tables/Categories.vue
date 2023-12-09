@@ -50,7 +50,7 @@
 
 
 
-    <Modal :show="showEditModal" @close="toggleEditModal()" size="lg">
+    <Modal :show="showEditModal" @close="toggleEditModal()" >
         <template #title>
             <h3 class="text-xl font-bold text-center ">Editar categoria</h3>
         </template>

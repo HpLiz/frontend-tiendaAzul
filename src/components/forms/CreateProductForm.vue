@@ -1,12 +1,12 @@
 <template>
-    <form class="mt-3 w-full">
+    <form class="mt-3 w-auto">
         <div class="divider"></div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
                 <label class="font-bold pr-4">
                     Nombre*
                 </label>
-                <input v-bind="name" type="text" class="input input-sm w-full">
+                <input v-bind="name" type="text" class="input input-bordered   input-sm w-auto">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
                 </label>
@@ -15,7 +15,7 @@
                 <label class="font-bold pr-4">
                     Cantidad en Stock*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="stock">
+                <input type="number" class="input input-bordered   input-sm w-auto" v-bind="stock">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.stock }}</span>
                 </label>
@@ -24,7 +24,7 @@
                 <label class="font-bold pr-4 col-span-2">
                     Descripcion*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="description">
+                <input type="text" class="input input-bordered   input-sm w-full" v-bind="description">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.description }}</span>
                 </label>
@@ -33,7 +33,7 @@
                 <label class="font-bold pr-4">
                     Precio de venta*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="salePrice">
+                <input type="number" class="input  input-bordered  input-sm w-auto" v-bind="salePrice">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.salePrice }}</span>
                 </label>
@@ -42,7 +42,7 @@
                 <label class="font-bold pr-4">
                     Precio de compra*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="purchasePrice">
+                <input type="number" class="input input-bordered   input-sm w-auto" v-bind="purchasePrice">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.purchasePrice }}</span>
                 </label>
@@ -51,7 +51,7 @@
                 <label class="font-bold pr-4">
                     Codigo de barras
                 </label>
-                <input type="text" class="input input-sm w-full uppercase" v-bind="barCode">
+                <input type="text" class="input input-bordered   input-sm w-auto uppercase" v-bind="barCode">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.barCode }}</span>
                 </label>
@@ -61,7 +61,7 @@
                 <label class="font-bold pr-4">
                     Marca*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="brand">
+                <input type="text" class="input input-bordered   input-sm w-auto" v-bind="brand">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.brand }}</span>
                 </label>
@@ -70,7 +70,7 @@
                 <label class="font-bold pr-4">
                     Unidad de medida*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="measureUnit">
+                <input type="text" class="input  input-bordered  input-sm w-auto" v-bind="measureUnit">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.measureUnit }}</span>
                 </label>
@@ -82,7 +82,7 @@
                 <label class="font-bold pr-4">
                     Categoria*
                 </label>
-                <select class="select select-md select-bordered w-full" v-model="categoryId">
+                <select class="select select-md select-bordered w-auto" v-model="categoryId">
                     <option disabled selected value="">Selecciona una categoria</option>
                     <option v-for="item in categorias" :key="item.id" :value="item.id">{{ item.name }}</option>
 
@@ -92,7 +92,7 @@
                 <label class="font-bold pr-4">
                     Proveedor*
                 </label>
-                <select class="select select-md select-bordered w-full" v-model="providerId">
+                <select class="select select-md select-bordered w-auto" v-model="providerId">
                     <option disabled selected value="">Selecciona un proveedor</option>
                     <option v-for="item in proveedores" :key="item.id" :value="item.id">{{ item.name }}</option>
 

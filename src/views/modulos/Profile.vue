@@ -81,8 +81,8 @@
 
 
         <div class="flex flex-row items-center justify-center h-full  my-8">
-            <label v-if="true" @click="onSubmit()" class="btn btn-primary mr-2">{{ opcion }}</label>
-            <label v-if="opcion.includes('Guardar')" @click="cancel()" class="btn btn-primary">{{ opcion }}</label>
+            <label v-if="false" @click="onSubmit()" class="btn btn-primary mr-2">{{ opcion }}</label>
+            <label v-if="opcion.includes('Guardar')" @click="cancel()" class="btn btn-primary">Cancelar</label>
         </div>
     </div>
 </template>
@@ -132,7 +132,10 @@ const rfc = defineInputBinds("rfc")
 const curp = defineInputBinds("curp")
 const rol = defineInputBinds("rol")
 
-
+function cancel(){
+    opcion="Modificar"
+    habilitado=false
+} 
 
 const onSubmit = handleSubmit(async (values) => {
 

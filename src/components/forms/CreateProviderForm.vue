@@ -1,40 +1,42 @@
 <template>
-    <form>
+    <form class="mt-3 w-full">
+        <div class="divider">Informacion del Proveedor</div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-
+            
             <div>
                 <label class="font-bold pr-4">
                     Nombre*
                 </label>
-                <input v-bind="name" type="text" class="input input-sm w-full">
+                <input v-bind="name" type="text" class=" input-bordered uppercase  input input-sm w-full">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
                 </label>
             </div>
             <div>
                 <label class="font-bold pr-4 ">
-                    Correo Electronico
+                    Correo Electronico*
                 </label>
-                <input type="email" class="input input-sm w-full" v-bind="email">
+                <input type="email" class=" input-bordered  input input-sm w-full" v-bind="email">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.email }}</span>
                 </label>
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Numero de Telefono
+                    Telefono
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="phone">
+                <input type="text" class=" input-bordered  input input-sm w-full" v-bind="phone">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.phone }}</span>
                 </label>
             </div>
-        </div>
+        
         <div class="flex justify-end">
             <button class="btn btn-md btn-primary" @click="onSubmit()" :disabled="isSubmitting">
                 {{ isSubmitting ? "Creando..." : "Crear" }}
             </button>
         </div>
+    </div>
     </form>
 </template>
 
@@ -51,8 +53,8 @@ const emits = defineEmits(['closeModal'])
 const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({
     validationSchema: yup.object({
         name: yup.string().min(3, "El nombre del proveedor debe tener al menos 3 caracteres").required("Este campo es requerido"),
-        phone: yup.string("Debe ser un numero de telefono"),
-        email: yup.string().email("Debe ser un correo valido")
+        phone: yup.number("Debe ser un numero de telefono"),
+        email: yup.string().email("Debe ser un correo valido").required("El email es requerido"),
     })
 })
 

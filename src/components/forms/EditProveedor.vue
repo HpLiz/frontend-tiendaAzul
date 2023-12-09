@@ -6,16 +6,16 @@
                 <label class="font-bold pr-4">
                     Nombre(s)*
                 </label>
-                <input v-bind="name" type="text" class="input input-sm uppercase w-full">
+                <input v-bind="name" type="text" class="input input-bordered   input-sm uppercase w-full">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
                 </label>
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Email*
+                    Correo Electronico*
                 </label>
-                <input type="email" class="input input-sm w-full" v-bind="email">
+                <input type="email" class="input  input-bordered  input-sm w-full" v-bind="email">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.email }}</span>
                 </label>
@@ -24,7 +24,7 @@
                 <label class="font-bold pr-4">
                     Telefono
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="phone">
+                <input type="text" class="input  input-bordered  input-sm w-full" v-bind="phone">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.phone }}</span>
                 </label>
@@ -52,7 +52,7 @@ const props = defineProps(['proveedor'])
 const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({
     validationSchema: yup.object({
         name: yup.string().min(3).required("Este campo es obligatorio"),
-        email: yup.string().email("Debe ser un email valido").required("Este campo es obligatorio"),
+        email: yup.string().email("Debe ser un email valido").required("El email es requerido"),
         phone: yup.number("Debe ser un numero de telefono"),
         }),
     initialValues: {

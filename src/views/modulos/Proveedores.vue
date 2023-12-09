@@ -19,8 +19,10 @@
             <CreateProviderForm @closeModal="toggleCreateModal()" />
         </template>
     </Modal>
-    <label @click="toggleCreateModal()" class="btn btn-primary">Crear proveedor</label>
-    <div class="flex justify-center content-center h-screen">
+    <div class="flex justify-center w-3/4 mx-auto mt-4">
+        <label @click="toggleCreateModal()" class="btn btn-primary">Crear proveedor</label>
+    </div>
+    <div class="flex justify-center content-center h-screen mt-5">
         <ProvidersTable :providers="proveedores" />
     </div>
 </template>

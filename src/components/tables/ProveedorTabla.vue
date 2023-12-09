@@ -17,7 +17,7 @@
         </template>
     </Modal>
 
-    <Modal :show="showEditModal" @close="toggleEditModal()" size="lg">
+    <Modal :show="showEditModal" @close="toggleEditModal()" size="md">
         <template #title>
             <h3 class="text-xl font-bold text-center ">Editar Proveedor</h3>
         </template>

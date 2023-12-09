@@ -6,7 +6,7 @@
                 <label class="font-bold pr-4">
                     Nombre*
                 </label>
-                <input v-bind="name" type="text" class="input input-sm w-full">
+                <input v-bind="name" type="text" class="input input-bordered   input-sm w-full">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
                 </label>
@@ -15,7 +15,7 @@
                 <label class="font-bold pr-4">
                     Cantidad en Stock*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="stock">
+                <input type="number" class="input input-bordered   input-sm w-full" v-bind="stock">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.stock }}</span>
                 </label>
@@ -24,7 +24,7 @@
                 <label class="font-bold pr-4 col-span-2">
                     Descripcion*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="description">
+                <input type="text" class="input input-bordered   input-sm w-full" v-bind="description">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.description }}</span>
                 </label>
@@ -33,7 +33,7 @@
                 <label class="font-bold pr-4">
                     Precio de venta*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="salePrice">
+                <input type="number" class="input  input-bordered  input-sm w-full" v-bind="salePrice">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.salePrice }}</span>
                 </label>
@@ -42,7 +42,7 @@
                 <label class="font-bold pr-4">
                     Precio de compra*
                 </label>
-                <input type="number" class="input input-sm w-full" v-bind="purchasePrice">
+                <input type="number" class="input input-bordered   input-sm w-full" v-bind="purchasePrice">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.purchasePrice }}</span>
                 </label>
@@ -51,7 +51,7 @@
                 <label class="font-bold pr-4">
                     Codigo de barras
                 </label>
-                <input type="text" class="input input-sm w-full uppercase" v-bind="barCode">
+                <input type="text" class="input  input-bordered  input-sm w-full uppercase" v-bind="barCode">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.barCode }}</span>
                 </label>
@@ -61,7 +61,7 @@
                 <label class="font-bold pr-4">
                     Marca*
                 </label>
-                <input type="text" class="input input-sm w-full" v-bind="brand">
+                <input type="text" class="input  input-bordered  input-sm w-full" v-bind="brand">
                 <label class="label h-6 static">
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.brand }}</span>
                 </label>
