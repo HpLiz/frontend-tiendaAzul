@@ -85,11 +85,11 @@ const login = () => {
         userStore.setRole(user.role)
         userStore.setToken(token)
         employeeStore.setEmployee(userStore.state.token)
-        $cookies.set('auth', userStore.state.token)
-        $cookies.set('role', userStore.state.role)
-        $cookies.set('user', { ...user, token })
+        $cookies.set('auth', userStore.state.token, { expires: 60 * 60 * 1000 })
+        $cookies.set('role', userStore.state.role, { expires: 60 * 60 * 1000 })
+        $cookies.set('user', { ...user, token }, { expires: 60 * 60 * 1000 })
 
-        $cookies.set("employeeId", employeeStore.state.id)
+        $cookies.set("employeeId", employeeStore.state.id, { expires: 60 * 60 * 1000 })
         // setUser(user)
         router.push('/')
     }).catch((error) => {
@@ -103,9 +103,22 @@ const login = () => {
 }
 
 onBeforeMount(() => {
+    const auth = $cookies.get('auth')
+    const role = $cookies.get('role')
+    const user = $cookies.get('user')
+    const employeeId = $cookies.get('employeeId')
+
+    if (auth && role && user && employeeId) {
+        userStore.setId(user.id)
+        userStore.setRole(role)
+        userStore.setToken(auth)
+        employeeStore.setEmployee(auth)
+        router.push('/')
+    } else {
     $cookies.remove('auth')
     $cookies.remove('role')
     $cookies.remove('employeeId')
     $cookies.remove('user')
+    }
 })
 </script>
