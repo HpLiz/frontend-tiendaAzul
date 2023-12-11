@@ -93,7 +93,8 @@
             <div class="absolute bottom-20 left-28 flex items-center content-center ">
                 <SalesTable />
             </div>
-        </div>-->
+        </div>
+        --->
     </div>
 
     <Modal :show="autoziacion" @close="autoziacionModal(); cancelarEdit()" size="lg">
@@ -166,6 +167,7 @@ const productName = ref("")
 const productos = ref([])
 const realizandoVenta = ref(false)
 
+///buscar
 watch(productName, async (newNameProduct) => {
     try {
         if (newNameProduct.trim() === "") {
@@ -195,6 +197,7 @@ watch(productName, async (newNameProduct) => {
 //     console.log(total.value);
 // }, { deep: true })
 
+//finalizar venta
 const confirmarVenta = async () => {
     try {
         realizandoVenta.value = true
@@ -218,6 +221,8 @@ const confirmarVenta = async () => {
         await ventaStore.fetchVentas()
         ventaStore.limpiarVenta()
         ventaStore.limpiarBusqueda()
+        ventaStore.vaciarCarrito()
+        limpiarBusqueda()
     } catch (error) {
         realizandoVenta.value = false
         console.log(error);

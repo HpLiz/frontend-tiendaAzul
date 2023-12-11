@@ -16,6 +16,7 @@ export const useVentaStore = defineStore('venta', () => {
 
     const createVenta = async () => {
         try {
+            
             const response = await axios.request({
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -28,7 +29,7 @@ export const useVentaStore = defineStore('venta', () => {
             })
             venta.value = response.data
 
-            // toast.success("Venta generada")
+            //toast.success("Venta generada"+venta.value);
         } catch (error) {
             console.log(error);
             toast.error("Error al generar la venta API"+error)
@@ -68,7 +69,7 @@ export const useVentaStore = defineStore('venta', () => {
         venta.value = {}
     }
     const vaciarCarrito = () => {
-        this.carrito.value = ref([])
+        carrito.value = []
     }
 
     const fetchVentas = async () => {

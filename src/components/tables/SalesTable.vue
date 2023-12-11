@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-x-auto h-44">
+    <div class="overflow-x-auto h-full">
         <table class="table">
             <!-- head -->
             <thead>
