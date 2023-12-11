@@ -67,6 +67,12 @@ const routes = [
                 
             },
             {
+                path: 'reportes',
+                name: "Reportes",
+                component: () => import('../views/modulos/Reportes.vue'),
+                
+            },
+            {
                 path: 'unauthorized',
                 name: "Unauthorized",
                 component: () => import('../views/Unauthorized.vue'),
