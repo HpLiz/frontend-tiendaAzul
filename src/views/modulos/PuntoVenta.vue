@@ -64,6 +64,7 @@
                                     <option class="text-sm" v-for="cant in articulo.stock" :key="cant" :value="cant">
                                         {{ cant }}
                                     </option>
+
                                 </select>
                                 <button class="" @click="eliminarDelCarrito(articulo)">
                                     <font-awesome-icon :icon="['fas', 'trash']" class="text-xl hover:cursor-pointer" />
@@ -87,13 +88,32 @@
                 </div>
             </div>
         </div>
-
+        <!--
         <div class="static w-screen h-screen">
             <div class="absolute bottom-20 left-28 flex items-center content-center ">
                 <SalesTable />
             </div>
-        </div>
+        </div>-->
     </div>
+
+    <Modal :show="autoziacion" @close="autoziacionModal()" size="lg">
+        <template #title>
+            <h3 class="text-xl font-bold text-center ">Autorizacion Necesaria</h3>
+        </template>
+        <template #closeModal>
+            <div class="relative">
+
+                <button class="btn btn-sm text-xl hover:text-2xl btn-circle btn-ghost absolute right-1 top-0"
+                    @click="autoziacionModal()">
+                    <font-awesome-icon :icon="['fas', 'xmark']" />
+                </button>
+            </div>
+        </template>
+        <template #body>
+            <autorizarCambio :articulo="articuloMod" @closeModal="autoziacionModal()"/>
+        </template>
+    </Modal>
+
 </template>
 
 <script setup>
@@ -103,8 +123,16 @@ import SalesTable from '../../components/tables/SalesTable.vue'
 import { useForm } from 'vee-validate';
 import { useToast } from 'vue-toastification'
 import * as yup from 'yup';
-import { useVentaStore } from '../../stores/venta'
+import { useVentaStore } from '../../stores/venta';
 import axios from 'axios';
+
+//////autorizacion para eliminar y reducir
+import Modal from '../../components/Modal.vue';
+import autorizarCambio from '../../components/forms/autorizacion.vue';
+import { useToggle } from '@vueuse/core';
+const [autoziacion, autoziacionModal] = useToggle()
+
+//////
 
 const toast = useToast()
 
@@ -171,7 +199,7 @@ const confirmarVenta = async () => {
     } catch (error) {
         realizandoVenta.value = false
         console.log(error);
-        toast.error("Error al realizar la venta")
+        toast.error("Error al realizar la venta" + error)
     } finally {
         ventaStore.vaciarCarrito()
         await ventaStore.fetchVentas()
@@ -209,8 +237,10 @@ const agregarCarrito = (product) => {
                 stock: product.stock,
                 salePrice: product.salePrice
             })
+            
         }
-
+        let producto = carrito.find(elemento => elemento.id === product.id)
+        producto.selectedQuantity=producto.amount
 
 
     }
@@ -222,9 +252,23 @@ const generarVenta = async () => {
     await ventaStore.createVenta()
 }
 
+let articuloMod = ref();
+
 const actualizarCantidad = (producto) => {
     if (producto.selectedQuantity <= producto.stock) {
-        producto.amount = producto.selectedQuantity
+        if (producto.selectedQuantity < producto.amount) {
+            toast.warning("nececita autorizacion")
+            try {
+                articuloMod=producto;
+                autoziacionModal()
+                //toast.warning("completado")
+            } catch (error) {
+                toast.warning("Autorizacion invalida")
+                producto.selectedQuantity = producto.amount 
+            }     
+            //      
+        }else
+            producto.amount = producto.selectedQuantity
     } else {
         toast.warning("Stock insuficiente!!")
     }
@@ -247,6 +291,7 @@ onBeforeMount(() => {
 
 onUnmounted(() => {
     ventaStore.limpiarBusqueda()
+    
 })
 
 

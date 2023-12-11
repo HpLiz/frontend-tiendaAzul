@@ -61,10 +61,17 @@ const routes = [
                 }
             },
             {
+                path: 'ventas',
+                name: "Ventas",
+                component: () => import('../views/modulos/Ventas.vue'),
+                
+            },
+            {
                 path: 'unauthorized',
                 name: "Unauthorized",
                 component: () => import('../views/Unauthorized.vue'),
-            }
+            },
+            
         ]
     }, {
         path: '/login',

@@ -31,7 +31,7 @@ export const useVentaStore = defineStore('venta', () => {
             // toast.success("Venta generada")
         } catch (error) {
             console.log(error);
-            toast.error("Error al generar la venta")
+            toast.error("Error al generar la venta API"+error)
         }
     }
 
@@ -68,7 +68,7 @@ export const useVentaStore = defineStore('venta', () => {
         venta.value = {}
     }
     const vaciarCarrito = () => {
-        carrito.value = []
+        this.carrito.value = ref([])
     }
 
     const fetchVentas = async () => {

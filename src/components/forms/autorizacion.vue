@@ -1,11 +1,11 @@
 <template>
     <section class="">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto">
 
             <div class="w-full  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-base-300 ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-base-content text-center">
-                        Iniciar Sesión
+                        Autorizacion del Administrador
                     </h1>
                     <!-- TODO: corregir ortografia -->
 
@@ -34,16 +34,9 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-start">
-                            </div>
-                            <a href="#" class="text-sm font-medium text-primary-20 hover:underline dark:text-primary-500">
-                                Olvidó su contraseña?
-                            </a>
-                        </div>
                         <button @click.prevent="login()" :disabled="isLoading"
                             class="w-full btn btn-primary btn-sm font-medium rounded-lg text-sm px-5 text-center text-white">
-                            Ingresar
+                            Autorizar
                         </button>
 
                     </form>
@@ -57,69 +50,56 @@
 import { ref, onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification';
-import { useUserStore } from '../stores/userStore'
-import { useEmployeeStore } from '../stores/employee'
 import axios from 'axios'
+
+const emits = defineEmits(['closeModal','validoCambiado'])
+const props = defineProps(['articulo'])
+const producto = props.articulo
+//let valido=ref(null)
 
 const router = useRouter()
 const toast = useToast()
-const userStore = useUserStore()
-const employeeStore = useEmployeeStore()
 
 const username = ref("")
 const password = ref("")
-const showPassword = ref(false)
-const isLoading = ref(false)
+const showPassword = ref(true)
 
 // const { setToken, setUser } = store
 
 const login = () => {
-    isLoading.value = true
     axios.post('/api/auth/login', {
         username: username.value,
         password: password.value
     }).then((res) => {
-        isLoading.value = false
-        const { user, token } = res.data
-        userStore.setId(user.id)
-        userStore.setRole(user.role)
-        userStore.setToken(token)
-        employeeStore.setEmployee(userStore.state.token)
+        const { user, token } = res.data;
+        if(user.role.includes('admin')){
+            //toast.warning(user.role)
+            //valido.value=true;
+            producto.amount = producto.selectedQuantity ;                    
+            toast.success("Modificacion Autorizada");
+        }else{
+            producto.selectedQuantity = producto.amount;
+            //valido.value=false;
+            toast.error("Error de autentificacion");
+        }
 
-        $cookies.set('auth', userStore.state.token)
-        $cookies.set('role', userStore.state.role)
-        $cookies.set('user', { ...user, token })
-
-        $cookies.set("employeeId", employeeStore.state.id)
-        // setUser(user)
-        router.push('/')
+        
     }).catch((error) => {
+        producto.selectedQuantity = producto.amount    
+        toast.error("Error de autentificacion");   
         console.log(error);
         // console.log(error.response.data.message);
-        if (error.message) toast.error(error.message)
-        else if (error.message.data) toast.error(error.response.data.message);
-        isLoading.value = false
+        if (error.message){
+            console.log(error.message)
+            //toast.error(error.message)
+        }
+        else if (error.message.data) {
+            console.log(error.response.data.message)
+            ///toast.error(error.response.data.message);
+        }
     })
-
+    emits('closeModal')
+    //emits('validoCambiado', valido.value)
 }
 
-onBeforeMount(() => {
-    const auth = $cookies.get('auth')
-    const role = $cookies.get('role')
-    const user = $cookies.get('user')
-    const employeeId = $cookies.get('employeeId')
-
-    if (auth && role && user && employeeId) {
-        userStore.setId(user.id)
-        userStore.setRole(role)
-        userStore.setToken(auth)
-        employeeStore.setEmployee(auth)
-        router.push('/')
-    } else {
-    $cookies.remove('auth')
-    $cookies.remove('role')
-    $cookies.remove('employeeId')
-    $cookies.remove('user')
-    }
-})
 </script>
