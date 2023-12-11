@@ -96,7 +96,7 @@
         </div>-->
     </div>
 
-    <Modal :show="autoziacion" @close="autoziacionModal()" size="lg">
+    <Modal :show="autoziacion" @close="autoziacionModal(); cancelarEdit()" size="lg">
         <template #title>
             <h3 class="text-xl font-bold text-center ">Autorizacion Necesaria</h3>
         </template>
@@ -104,16 +104,33 @@
             <div class="relative">
 
                 <button class="btn btn-sm text-xl hover:text-2xl btn-circle btn-ghost absolute right-1 top-0"
-                    @click="autoziacionModal()">
+                    @click="autoziacionModal(); cancelarEdit()">
                     <font-awesome-icon :icon="['fas', 'xmark']" />
                 </button>
             </div>
         </template>
         <template #body>
-            <autorizarCambio :articulo="articuloMod" @closeModal="autoziacionModal()"/>
+            <autorizarCambio :articulo="articuloMod" @closeModal="autoziacionModal()" />
         </template>
     </Modal>
 
+    <Modal :show="autoziacionDelete" @close="autoziacionDeleteModal()" size="lg">
+        <template #title>
+            <h3 class="text-xl font-bold text-center ">Autorizacion Necesaria</h3>
+        </template>
+        <template #closeModal>
+            <div class="relative">
+
+                <button class="btn btn-sm text-xl hover:text-2xl btn-circle btn-ghost absolute right-1 top-0"
+                    @click="autoziacionDeleteModal()">
+                    <font-awesome-icon :icon="['fas', 'xmark']" />
+                </button>
+            </div>
+        </template>
+        <template #body>
+            <autorizarDelete :articulo="articuloMod" :carrito="carrito" @closeModal="autoziacionDeleteModal()" />
+        </template>
+    </Modal>
 </template>
 
 <script setup>
@@ -129,9 +146,14 @@ import axios from 'axios';
 //////autorizacion para eliminar y reducir
 import Modal from '../../components/Modal.vue';
 import autorizarCambio from '../../components/forms/autorizacion.vue';
+import autorizarDelete from '../../components/forms/DeleteVentProd.vue';
 import { useToggle } from '@vueuse/core';
 const [autoziacion, autoziacionModal] = useToggle()
+const [autoziacionDelete, autoziacionDeleteModal] = useToggle()
 
+const cancelarEdit = () => {
+    articuloMod.selectedQuantity = articuloMod.amount
+}
 //////
 
 const toast = useToast()
@@ -237,10 +259,10 @@ const agregarCarrito = (product) => {
                 stock: product.stock,
                 salePrice: product.salePrice
             })
-            
+
         }
         let producto = carrito.find(elemento => elemento.id === product.id)
-        producto.selectedQuantity=producto.amount
+        producto.selectedQuantity = producto.amount
 
 
     }
@@ -259,15 +281,15 @@ const actualizarCantidad = (producto) => {
         if (producto.selectedQuantity < producto.amount) {
             toast.warning("nececita autorizacion")
             try {
-                articuloMod=producto;
+                articuloMod = producto;
                 autoziacionModal()
                 //toast.warning("completado")
             } catch (error) {
                 toast.warning("Autorizacion invalida")
-                producto.selectedQuantity = producto.amount 
-            }     
+                producto.selectedQuantity = producto.amount
+            }
             //      
-        }else
+        } else
             producto.amount = producto.selectedQuantity
     } else {
         toast.warning("Stock insuficiente!!")
@@ -276,7 +298,14 @@ const actualizarCantidad = (producto) => {
 const eliminarDelCarrito = (producto) => {
     const index = carrito.indexOf(producto)
     if (index !== -1) {
-        carrito.splice(index, 1)
+        if (!$cookies.get('role').includes('admin')) {
+            autoziacionDeleteModal()
+            toast.warning("necesita autorizacion para eliminar")
+        } else {
+            
+            carrito.splice(index, 1)
+        }
+
     }
 }
 
@@ -291,7 +320,7 @@ onBeforeMount(() => {
 
 onUnmounted(() => {
     ventaStore.limpiarBusqueda()
-    
+
 })
 
 

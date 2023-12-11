@@ -53,11 +53,11 @@ import { useToast } from 'vue-toastification';
 import axios from 'axios'
 
 const emits = defineEmits(['closeModal'])
-const props = defineProps(['articulo'])
+const props = defineProps(['articulo','carrito'])
 const producto = props.articulo
+const carrito = props.carrito
 //let valido=ref(null)
 
-const router = useRouter()
 const toast = useToast()
 
 const username = ref("")
@@ -73,19 +73,16 @@ const login = () => {
     }).then((res) => {
         const { user, token } = res.data;
         if(user.role.includes('admin')){
-            //toast.warning(user.role)
-            //valido.value=true;
-            producto.amount = producto.selectedQuantity ;                    
-            toast.success("Modificacion Autorizada");
-        }else{
-            producto.selectedQuantity = producto.amount;
-            //valido.value=false;
+            const index = carrito.indexOf(producto)
+            carrito.splice(index, 1)                               
+            toast.success("Eliminación Autorizada");
+        }else{            
             toast.error("Error de autentificacion");
         }
 
         
     }).catch((error) => {
-        producto.selectedQuantity = producto.amount    
+            
         toast.error("Error de autentificacion");   
         console.log(error);
         // console.log(error.response.data.message);
