@@ -4,7 +4,7 @@
 
     <Modal :show="showCreateModal" @close="toggleCreateModal()" size="lg">
         <template #title>
-            <h3 class="text-xl font-bold text-center ">Crear empleado</h3>
+            <h3 class="text-xl font-bold text-center ">Registrar usuario</h3>
         </template>
         <template #closeModal>
             <div class="relative">
@@ -20,7 +20,7 @@
         </template>
     </Modal>
     <div class="flex justify-center w-3/4 mx-auto mt-4">
-        <label @click="toggleCreateModal()" class="btn btn-primary">Crear empleado</label>
+        <label @click="toggleCreateModal()" class="btn btn-primary">Registrar usuario</label>
     </div>
     <div class="flex justify-center content-center h-screen mt-5">
         <EmployeesTable :employees="store.empleadosLista" />
