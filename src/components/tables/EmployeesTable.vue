@@ -41,7 +41,7 @@
                     <th>Nombre</th>
                     <th>Contacto</th>
                     <th>Salario</th>
-                    <th>Informacion</th>
+                    <th>Información</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

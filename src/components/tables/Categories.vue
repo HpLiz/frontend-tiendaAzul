@@ -20,7 +20,7 @@
             <thead>
                 <tr class="text-base-content text-base">
                     <th>Nombre</th>
-                    <th>Descripcion</th>
+                    <th>Descripción</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -69,7 +69,7 @@
     </Modal>
     <Modal :show="showDeleteModal" @close="toggleModal()">
         <template v-slot:title>
-            <h3 class="text-lg font-bold text-center mt-5">¿Estas seguro de eliminar esta categoria?</h3>
+            <h3 class="text-lg font-bold text-center mt-5">¿Estas seguro de eliminar esta categoría?</h3>
         </template>
 
         <template #closeModal>

@@ -1,6 +1,6 @@
 <template>
     <form >
-        <div class="divider">Informacion del empleado</div>
+        <div class="divider">Información del empleado</div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
                 <label class="font-bold pr-4">
@@ -22,7 +22,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Email*
+                    Correo electrónico*
                 </label>
                 <input type="email" class="input  input-bordered  input-sm w-auto" v-bind="email">
                 <label class="label h-6 static">
@@ -31,7 +31,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Telefono
+                    Teléfono
                 </label>
                 <input type="text" class="input input-bordered   input-sm w-auto" v-bind="phone">
                 <label class="label h-6 static">
@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="divider">Informacion del usuario</div>
+        <div class="divider">Información del usuario</div>
 
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>

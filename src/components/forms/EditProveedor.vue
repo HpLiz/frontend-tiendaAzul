@@ -1,10 +1,10 @@
 <template>
     <form class="mt-3 w-full">
-        <div class="divider">Informacion del Proveedor</div>
+        <div class="divider">Información del Proveedor</div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
                 <label class="font-bold pr-4">
-                    Nombre(s)*
+                    Nombre completo*
                 </label>
                 <input v-bind="name" type="text" class="input input-bordered   input-sm uppercase w-full">
                 <label class="label h-6 static">
@@ -13,7 +13,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Correo Electronico*
+                    Correo Electrónico*
                 </label>
                 <input type="email" class="input  input-bordered  input-sm w-full" v-bind="email">
                 <label class="label h-6 static">
@@ -22,7 +22,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Telefono
+                    Teléfono
                 </label>
                 <input type="text" class="input  input-bordered  input-sm w-full" v-bind="phone">
                 <label class="label h-6 static">

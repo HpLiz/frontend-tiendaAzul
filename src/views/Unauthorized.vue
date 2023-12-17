@@ -4,7 +4,7 @@
             class=" flex flex-col md:flex-row items-center justify-center content-center px-5 text-gray-700 mx-auto w-9/12">
             <div class="max-w-md w-1/3">
                 <div class="text-8xl font-dark font-bold">401</div>
-                <p class="text-2xl md:text-3xl font-light leading-normal">Lo sentimos, no tienes autorizacion en estos
+                <p class="text-2xl md:text-3xl font-light leading-normal">Lo sentimos, no tienes autorización en estos
                     modulos</p>
                 <p class="mb-8">Regresar al modulo de venta</p>
 

@@ -50,7 +50,7 @@
                     <h2 class="text-center text-2xl font-bold">Productos</h2>
 
                     <div v-if="carrito.length <= 0">
-                        Sin articulos en la venta
+                        Sin artículos en la venta
                     </div>
                     <div v-else class="w-full">
                         <ul v-for="(articulo, index) in carrito" :key="index">
@@ -117,7 +117,7 @@
 
     <Modal :show="autoziacionDelete" @close="autoziacionDeleteModal()" size="lg">
         <template #title>
-            <h3 class="text-xl font-bold text-center ">Autorizacion Necesaria</h3>
+            <h3 class="text-xl font-bold text-center ">Autorización Necesaria</h3>
         </template>
         <template #closeModal>
             <div class="relative">

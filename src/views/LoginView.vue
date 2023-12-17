@@ -37,9 +37,6 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-start">
                             </div>
-                            <a href="#" class="text-sm font-medium text-primary-20 hover:underline dark:text-primary-500">
-                                Olvidó su contraseña?
-                            </a>
                         </div>
                         <button @click.prevent="login()" :disabled="isLoading"
                             class="w-full btn btn-primary btn-sm font-medium rounded-lg text-sm px-5 text-center text-white">

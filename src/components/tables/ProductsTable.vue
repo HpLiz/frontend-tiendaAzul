@@ -46,7 +46,7 @@
                     <th>Stock</th>
                     <th>Marca</th>
                     <th>Proveedor</th>
-                    <th>Categoria</th>
+                    <th>Categoría</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -91,7 +91,7 @@
                     <th>Stock</th>
                     <th>Marca</th>
                     <th>Proveedor</th>
-                    <th>Categoria</th>
+                    <th>Categoría</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>

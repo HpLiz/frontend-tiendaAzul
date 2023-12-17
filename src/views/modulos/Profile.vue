@@ -4,7 +4,7 @@
 
 
         <form class="mt-2 ">
-            <div class="divider">Informacion del empleado</div>
+            <div class="divider">Información del empleado</div>
             <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-1 md:grid-cols-2">
                 <div>
                     <label class="font-bold pr-4">
@@ -19,7 +19,7 @@
 
                 <div>
                     <label class="font-bold pr-4">
-                        Email*
+                        Correo Electrónico*
                     </label>
                     <input type="email" class="input input-sm border border-gray-300" v-bind="email" :disabled="habilitado"
                         :style="{ 'background-color': 'inherit', color: 'inherit' }">
@@ -29,7 +29,7 @@
                 </div>
                 <div>
                     <label class="font-bold pr-4">
-                        Telefono
+                        Teléfono
                     </label>
                     <input type="text" class="input input-sm border border-gray-300" v-bind="phone" :disabled="habilitado"
                         :style="{ 'background-color': 'inherit', color: 'inherit' }">

@@ -5,7 +5,7 @@
             <div class="w-full  rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-base-300 ">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl text-base-content text-center">
-                        Autorizacion del Administrador
+                        Autorización del Administrador
                     </h1>
                     <!-- TODO: corregir ortografia -->
 

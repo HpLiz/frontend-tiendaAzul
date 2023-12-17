@@ -3,7 +3,7 @@
     <NavBar titleModule="Productos" />
     <Modal :show="showCreateModal" @close="toggleCreateModal()" size="lg">
         <template #title>
-            <h3 class="text-xl font-bold text-center ">Crear producto</h3>
+            <h3 class="text-xl font-bold text-center ">Registrar producto</h3>
         </template>
         <template #closeModal>
             <div class="relative">
@@ -20,7 +20,7 @@
         </template>
     </Modal>
     <div class="flex justify-center w-3/4 mx-auto mt-4">
-        <label @click="toggleCreateModal()" class="btn btn-primary flex items-center">Crear producto</label>
+        <label @click="toggleCreateModal()" class="btn btn-primary flex items-center">Registrar producto</label>
     </div>
     <div>
         <ProductsTable :products="store.productos" />

@@ -51,7 +51,7 @@
                             <span class="inline-flex items-center justify-center h-12 w-12">
                                 <font-awesome-icon icon="fa-solid fa-box-archive" />
                             </span>
-                            <span class=" font-medium">Categorias</span>
+                            <span class=" font-medium">Categorías</span>
                         </RouterLink>
                     </li>
                     <!-- <li>
@@ -110,7 +110,7 @@
                             <span class="inline-flex items-center justify-center h-12 w-12 ">
                                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" />
                             </span>
-                            <span class=" font-medium">Cerrar Sesion</span>
+                            <span class=" font-medium">Cerrar Sesión</span>
                         </button>
                     </li>
                 </ul>

@@ -22,7 +22,7 @@
             </div>
             <div class="col-span-2">
                 <label class="font-bold pr-4 col-span-2">
-                    Descripcion*
+                    Descripción*
                 </label>
                 <input type="text" class="input input-bordered   input-sm w-full" v-bind="description">
                 <label class="label h-6 static">
@@ -49,7 +49,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Codigo de barras
+                    Código de barras
                 </label>
                 <input type="text" class="input input-bordered   input-sm w-auto uppercase" v-bind="barCode">
                 <label class="label h-6 static">
@@ -80,7 +80,7 @@
 
             <div>
                 <label class="font-bold pr-4">
-                    Categoria*
+                    Categoría*
                 </label>
                 <select class="select select-md select-bordered w-auto" v-model="categoryId">
                     <option disabled selected value="">Selecciona una categoria</option>
@@ -94,7 +94,7 @@
                 </label>
                 <select class="select select-md select-bordered w-auto" v-model="providerId">
                     <option disabled selected value="">Selecciona un proveedor</option>
-                    <option v-for="item in proveedores" :key="item.id" :value="item.id">{{ item.name }}</option>
+                    <option v-for="item in proveedores" :key="item.id" :value="item.id">{{ item.companyName }}</option>
 
                 </select>
             </div>

@@ -42,7 +42,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email</th>
-                    <th>Telefono</th>
+                    <th>Teléfono</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -67,7 +67,7 @@
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Email|</th>
-                    <th>Telefono</th>
+                    <th>Teléfono</th>
                     <th>Acciones</th>
                 </tr>
             </tfoot>

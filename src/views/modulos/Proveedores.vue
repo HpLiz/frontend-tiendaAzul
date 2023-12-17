@@ -4,7 +4,7 @@
     <Modal :show="showCreateModal" @close="toggleCreateModal()" size="md">
         <template #title>
             <h3 class="text-xl font-bold text-center ">
-                Crear un proveedor
+                Registrar un proveedor
             </h3>
         </template>
         <template #closeModal>
@@ -20,7 +20,7 @@
         </template>
     </Modal>
     <div class="flex justify-center w-3/4 mx-auto mt-4">
-        <label @click="toggleCreateModal()" class="btn btn-primary">Crear proveedor</label>
+        <label @click="toggleCreateModal()" class="btn btn-primary">Registrar proveedor</label>
     </div>
     <div class="flex justify-center content-center h-screen mt-5">
         <ProvidersTable :providers="proveedores" />
