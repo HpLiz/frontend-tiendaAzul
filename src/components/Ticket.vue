@@ -5,17 +5,17 @@
         <center id="top">
             <div class="logo"></div>
             <div class="info">
-                <h2>SBISTechs Inc</h2>
+                <h2>Tienda Azul</h2>
             </div><!--End Info-->
         </center><!--End InvoiceTop-->
 
         <div id="mid">
             <div class="info">
-                <h2>Contact Info</h2>
+                <h2>Contacto</h2>
                 <p>
-                    Address : street city, state 0000
-                    Email : JohnDoe@gmail.com
-                    Phone : 555-555-5555
+                    Dirección : Oaxaca de Juárez, Oax.
+                    Correo : tiendazul@gmail.com
+                    Teléfono : 555-555-5555
                 </p>
             </div>
         </div><!--End Invoice Mid-->
@@ -26,10 +26,10 @@
                 <table>
                     <tr class="tabletitle">
                         <td class="item">
-                            <h2>Item</h2>
+                            <h2>Producto</h2>
                         </td>
                         <td class="Hours">
-                            <h2>Qty</h2>
+                            <h2>Cantidad</h2>
                         </td>
                         <td class="Rate">
                             <h2>Sub Total</h2>
@@ -121,8 +121,8 @@
             </div><!--End Table-->
 
             <div id="legalcopy">
-                <p class="legal"><strong>Thank you for your business!</strong>  Payment is expected within 31 days; please
-                    process this invoice within that time. There will be a 5% interest charge per month on late invoices.
+                <p class="legal"><strong>Gracias por su compra!</strong>  No se realizan cambios ni devoluviones; por favor,
+                    revise sus productos antes de salir. Vuelva pronto!.
                 </p>
             </div>
 
@@ -197,7 +197,8 @@ p {
     /* float: left; */
     height: 60px;
     width: 60px;
-    background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;
+    /*background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;*/
+    background: url(../../public/logo2.png) no-repeat;
     background-size: 60px 60px;
 }
 
