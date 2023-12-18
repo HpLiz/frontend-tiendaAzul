@@ -61,7 +61,7 @@
 
                                 <select class="select select-bordered  w-1/5" v-model="articulo.selectedQuantity"
                                     @change="actualizarCantidad(articulo)">
-                                    <option class="text-sm" v-for="cant in articulo.stock" :key="cant" :value="cant">
+                                    <option class="text-sm" v-for="cant in articulo.stock-1" :key="cant" :value="cant">
                                         {{ cant }}
                                     </option>
 

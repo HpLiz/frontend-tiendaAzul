@@ -67,6 +67,12 @@ const routes = [
                 
             },
             {
+                path: 'analisis',
+                name: "Analisis",
+                component: () => import('../views/modulos/AnalisisVista.vue'),
+                
+            },
+            {
                 path: 'unauthorized',
                 name: "Unauthorized",
                 component: () => import('../views/Unauthorized.vue'),

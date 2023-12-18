@@ -96,8 +96,14 @@ const login = () => {
     }).catch((error) => {
         console.log(error);
         // console.log(error.response.data.message);
-        if (error.message) toast.error(error.message)
-        else if (error.message.data) toast.error(error.response.data.message);
+        if (error.message) {
+            console.log(error.message)
+            toast.error("Usuario no encontrado, Verifique sus credenciales")
+        }
+        else if (error.message.data) {
+            console.log(error.response.data.message);
+            toast.error("Usuario no encontrado, Verifique sus credenciales");
+            }
         isLoading.value = false
     })
 

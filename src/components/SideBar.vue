@@ -73,15 +73,21 @@
                             class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                             <span class="inline-flex items-center justify-center h-12 w-12 ">
 
-                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 20">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M6 1v4a1 1 0 0 1-1 1H1m8-2h3M9 7h3m-4 3v6m-4-3h8m3-11v16a.969.969 0 0 1-.932 1H1.934A.97.97 0 0 1 1 18V5.828a2 2 0 0 1 .586-1.414l2.828-2.828A2 2 0 0 1 5.829 1h8.239A.969.969 0 0 1 15 2ZM4 10h8v6H4v-6Z" />
-                                </svg>
+                                <font-awesome-icon :icon="['fas', 'file-contract']" />
 
                             </span>
-                            <span class=" font-medium">Ventas</span>
+                            <span class=" font-medium">Historial de Ventas</span>
+                        </RouterLink>
+                    </li>
+                    <li>
+                        <RouterLink to="/analisis"
+                            class="flex flex-row items-center h-12 transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
+                            <span class="inline-flex items-center justify-center h-12 w-12 ">
+
+                                <font-awesome-icon :icon="['fas', 'chart-column']" />
+
+                            </span>
+                            <span class=" font-medium">Estadisticas</span>
                         </RouterLink>
                     </li>
 
