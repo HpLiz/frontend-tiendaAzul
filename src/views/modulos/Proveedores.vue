@@ -23,7 +23,7 @@
         <label @click="toggleCreateModal()" class="btn btn-primary">Registrar proveedor</label>
     </div>
     <div class="flex justify-center content-center h-screen mt-5">
-        <ProvidersTable :providers="proveedores" />
+        <ProvidersTable :providers="store.proveedores" />
     </div>
 </template>
 
@@ -36,12 +36,14 @@ import { onBeforeMount, onMounted } from 'vue';
 import Modal from '../../components/Modal.vue';
 import CreateProviderForm from '../../components/forms/CreateProviderForm.vue'
 
-const { fetchProveedores, proveedores } = useProveedoresStore()
+const store = useProveedoresStore()
+
+
 
 const [showCreateModal, toggleCreateModal] = useToggle()
 
 onBeforeMount(() => {
-    fetchProveedores();
+    store.fetchProveedores();
 })
 
 </script>

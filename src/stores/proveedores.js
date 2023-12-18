@@ -26,7 +26,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 			});
 	};
 
-	async function crearProveedor(body) {
+	async function crear(body) {
 		try {
 			const response = await axios.request({
 				headers: {
@@ -36,11 +36,11 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 				url: "/api/providers",
 				data: body,
 			});
-			fetchProductos();
+			fetchProveedores();
 			toast.success("Proveedor creado correctamente");
 		} catch (error) {
 			console.log(error);
-			toast.error("Error al crear el Proveedor" + error);
+			toast.error("Error al crear el Proveedor");
 		}
 	}
 
@@ -53,7 +53,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 				method: "DELETE",
 				url: `/api/providers/${id}`,
 			});
-			fetchProductos();
+			fetchProveedores();
 			toast.success("Proveedor elimininado correctamente");
 		} catch (err) {
 			console.log(err);
@@ -61,7 +61,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 		}
 	}
 
-	async function editarProveedor(id, changes) {
+	const editarProveedor = async (id, changes) => {
 		try {
 			const response = await axios.request({
 				headers: {
@@ -74,10 +74,10 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 			fetchProveedores();
 			toast.success("Proveedor actualizado correctamente");
 		} catch (error) {
-			console.log(error);
 			toast.error("Error al actualizar el Proveedor");
+			console.log(error);
 		}
-	}
+	};
 
 	async function getProveedor(id) {
 		try {
@@ -99,7 +99,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 		//regresr todos los metodos
 		proveedores,
 		fetchProveedores,
-		crearProveedor,
+		crear,
 		editarProveedor,
 		eliminarProveedor,
 		getProveedor,
@@ -110,3 +110,7 @@ if (import.meta.hot) {
     import.meta.hot.accept(acceptHMRUpdate(useProveedoresStore, import.meta.hot))
 }
 */
+
+if (import.meta.hot) {
+	import.meta.hot.accept(acceptHMRUpdate(useProveedoresStore, import.meta.hot));
+}
