@@ -65,11 +65,11 @@
                     <td>{{ product.name }}
 
                     </td>
-                    <td>${{ product.salePrice }}</td>
+                    <td>${{ product.salePrice.toFixed(2) }}</td>
                     <td>${{ product.purchasePrice }}</td>
                     <td>{{ product.stock }}</td>
                     <td>{{ product.brand }}</td>
-                    <td>{{ product.provider.name }}</td>
+                    <td>{{ product.provider.companyName }}</td>
                     <td>{{ product.category.name }}</td>
                     <th>
                         <button class="btn btn-xs bg-rose-500 text-white" @click="seleccionarEliminar(product.id)">

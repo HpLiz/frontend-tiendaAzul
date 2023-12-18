@@ -173,7 +173,6 @@ watch(productName, async (newNameProduct) => {
         if (newNameProduct.trim() === "") {
             productos.value = []
         } else {
-            // console.log(newNameProduct);
             const response = await axios.request({
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -184,7 +183,6 @@ watch(productName, async (newNameProduct) => {
                     name: newNameProduct,
                 }
             })
-            // console.log(response.data);
             productos.value = response.data
         }
 
@@ -193,11 +191,6 @@ watch(productName, async (newNameProduct) => {
     }
 })
 
-// watch(carrito, (newCarrito) => {
-//     console.log(total.value);
-// }, { deep: true })
-
-//finalizar venta
 const confirmarVenta = async () => {
     try {
         realizandoVenta.value = true
@@ -226,7 +219,7 @@ const confirmarVenta = async () => {
     } catch (error) {
         realizandoVenta.value = false
         console.log(error);
-        toast.error("Error al realizar la venta" + error)
+        toast.error("Error al realizar la venta")
     } finally {
         ventaStore.vaciarCarrito()
         await ventaStore.fetchVentas()
@@ -293,7 +286,7 @@ const actualizarCantidad = (producto) => {
                 toast.warning("Autorizacion invalida")
                 producto.selectedQuantity = producto.amount
             }
-            //      
+            //
         } else
             producto.amount = producto.selectedQuantity
     } else {
@@ -307,7 +300,7 @@ const eliminarDelCarrito = (producto) => {
             autoziacionDeleteModal()
             toast.warning("necesita autorizacion para eliminar")
         } else {
-            
+
             carrito.splice(index, 1)
         }
 
