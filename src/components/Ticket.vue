@@ -2,20 +2,19 @@
 <template>
     <div id="invoice-POS">
 
-        <center id="top">
+        <div id="top">
             <div class="logo"></div>
             <div class="info">
                 <h2>Tienda Azul</h2>
             </div><!--End Info-->
-        </center><!--End InvoiceTop-->
+        </div><!--End InvoiceTop-->
 
         <div id="mid">
             <div class="info">
                 <h2>Contacto</h2>
                 <p>
-                    Dirección : Oaxaca de Juárez, Oax.
-                    Correo : tiendazul@gmail.com
-                    Teléfono : 555-555-5555
+                    Cajero : {{ ticketInfo.employee.fullname }}
+                    Fecha : {{ticketInfo.createdAt}}
                 </p>
             </div>
         </div><!--End Invoice Mid-->
@@ -32,32 +31,24 @@
                             <h2>Cantidad</h2>
                         </td>
                         <td class="Rate">
-                            <h2>Sub Total</h2>
+                            <h2>Precio</h2>
                         </td>
                     </tr>
 
-                    <tr class="service">
+                    <tr class="service" v-for="detalle in ticketInfo?.items" :key="detalle.id">
                         <td class="tableitem">
-                            <p class="itemtext">Zote 100grs</p>
+                            <p class="itemtext">{{detalle.name}}</p>
                         </td>
                         <td class="tableitem">
-                            <p class="itemtext">1</p>
+                            <p class="itemtext">{{detalle.SaleProduct.amount}}</p>
                         </td>
                         <td class="tableitem">
-                            <p class="itemtext">$14.00</p>
+                            <p class="itemtext">{{ detalle.salePrice }}</p>
                         </td>
                     </tr>
 
 
-                    <tr class="tabletitle">
-                        <td></td>
-                        <td class="Rate">
-                            <h2>Subtotal</h2>
-                        </td>
-                        <td class="payment">
-                            <h2>$14.00</h2>
-                        </td>
-                    </tr>
+                    
 
                     <tr class="tabletitle">
                         <td></td>
@@ -65,7 +56,7 @@
                             <h2>Total</h2>
                         </td>
                         <td class="payment">
-                            <h2>$14.00</h2>
+                            <h2>${{ ticketInfo.total.toFixed(2) }}</h2>
                         </td>
                     </tr>
 
@@ -73,8 +64,9 @@
             </div><!--End Table-->
 
             <div id="legalcopy">
-                <p class="legal"><strong>Gracias por su compra!</strong>  No se realizan cambios ni devoluviones; por favor,
-                    revise sus productos antes de salir. Vuelva pronto!.
+                <p> Dirección : Oaxaca de Juárez, Oax.<br>
+                    Correo : tiendazul@gmail.com<br>
+                    Teléfono : 555-555-5555
                 </p>
             </div>
 
@@ -84,7 +76,12 @@
 
 
 <script setup>
-const props = defineProps(['detalle'])
+// const props = ticketInfo(['detalle'])
+import { useReportesStore } from "../stores/reportes.js";
+const store = useReportesStore()
+
+const {ticketInfo} = store
+
 </script>
 
 <style scoped>
@@ -149,7 +146,6 @@ p {
     /* float: left; */
     height: 60px;
     width: 60px;
-    /*background: url(http://michaeltruong.ca/images/logo1.png) no-repeat;*/
     background: url(../../public/logo2.png) no-repeat;
     background-size: 60px 60px;
 }
