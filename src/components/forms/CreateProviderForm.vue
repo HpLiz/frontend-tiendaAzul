@@ -81,12 +81,10 @@
                 </label>
             </div>
         </div>
-        <div>
-            <div class="flex justify-end">
-                <button class="btn btn-md btn-primary" @click="onSubmit()" :disabled="isSubmitting">
-                    {{ isSubmitting ? "Creando..." : "Crear" }}
-                </button>
-            </div>
+        <div class="flex justify-end">
+            <button class="btn btn-md btn-primary" @click="onSubmit()" :disabled="isSubmitting">
+                {{ isSubmitting ? "Creando..." : "Crear" }}
+            </button>
         </div>
 
 
@@ -140,8 +138,11 @@ const companyEmail = defineInputBinds("companyEmail")
 
 const onSubmit = handleSubmit(async (values) => {
 
+    const body = {
+        ...values
+    }
+    await store.crearProveedor(body)
     emits('closeModal')
-    await store.crearProveedor(values)
 
 })
 
