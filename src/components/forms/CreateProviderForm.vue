@@ -24,7 +24,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Email*
+                    Correo electrónico*
                 </label>
                 <input type="email" class="input-bordered input input-sm w-full" v-bind="provEmail">
                 <label class="label h-6 static">
@@ -42,7 +42,7 @@
             </div>
 
         </div>
-        <div class="divider">Informacion de la empresa</div>
+        <div class="divider">Información de la empresa</div>
         <div class="grid grid-cols-1 gap-x-4  mt-4 sm:grid-cols-2">
             <div class="col-span-2">
                 <label class="font-bold pr-4">
@@ -55,7 +55,7 @@
             </div>
             <div class="col-span-2">
                 <label class="font-bold pr-4">
-                    Direccion
+                    Dirección
                 </label>
                 <input v-bind="companyAddress" type="text" class="input-bordered input input-sm  w-full">
                 <label class="label h-6 static">
@@ -64,7 +64,7 @@
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Email*
+                    Correo electrónico*
                 </label>
                 <input type="email" class="input-bordered input input-sm w-full" v-bind="companyEmail">
                 <label class="label h-6 static">
@@ -141,7 +141,7 @@ const onSubmit = handleSubmit(async (values) => {
     const body = {
         ...values
     }
-    await store.crearProveedor(body)
+    await store.crear(body)
     emits('closeModal')
 
 })

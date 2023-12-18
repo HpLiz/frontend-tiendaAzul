@@ -54,8 +54,8 @@
             </div>
         </div>
     </div> -->
-    <div class="overflow-x-auto">
-        <table class="table">
+    <div class="overflow-y-auto">
+        <table class="table table-xs">
             <!-- head -->
             <thead>
                 <tr>
