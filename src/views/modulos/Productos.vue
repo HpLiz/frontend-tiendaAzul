@@ -42,7 +42,6 @@ import CreateProductForm from '../../components/forms/CreateProductForm.vue';
 const store = useProductsStore()
 const catStore = useCategoriesStore()
 const provStore = useProveedoresStore()
-// const pr
 const [showCreateModal, toggleCreateModal] = useToggle()
 
 onBeforeMount(() => {

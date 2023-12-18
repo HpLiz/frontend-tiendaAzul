@@ -160,7 +160,7 @@ const password = defineInputBinds("password")
 
 const onSubmit = handleSubmit(async (values) => {
     const body = {
-        fullname: values.names.toUpperCase() + " " + values.lastnames.toUpperCase(),
+        fullname: values.names + " " + values.lastnames,
         curp: values.curp.toLowerCase(),
         rfc: values.rfc.toUpperCase(),
         phone: values.phone,

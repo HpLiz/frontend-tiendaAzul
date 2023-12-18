@@ -1,73 +1,52 @@
 <template>
-    <NavBar titleModule="Reportes   " />
+    <NavBar titleModule="Reportes" />
 
-    <div class="w-4/5 mx-auto flex items-center justify-evenly my-8">
-        <div class="">
-            <h3 class="text-primary text-3xl text-center font-extrabold">Mes</h3>
-            <StatReportes month="Diciembre 2023" :articulos="itemsTotal" :total="amountTotal" />
+
+
+
+    <div class="w-4/5 mx-auto flex flex-col items-center justify-evenly my-8">
+        <div role="tablist" class="tabs tabs-boxed">
+            <router-link to="/reportes/mes" role="tab" :class="{ 'tab-active': $route.path === '/reportes/mes' }"
+                class="tab text-xl font-semibold">Estadisticas mes</router-link>
+            <router-link to="/reportes/dia" role="tab" :class="{ 'tab-active': $route.path === '/reportes/dia' }"
+                class="tab text-xl font-semibold">Estadisticas dia</router-link>
         </div>
-        <div class="">
-            <h3 class="text-primary text-3xl text-center font-extrabold">Hoy</h3>
-            <StatReportes month="Diciembre 15, 2023" :articulos="todayTotalItems" :total="todayTotalAmount" />
-        </div>
-        <!-- <div class="divider divider-vertical"></div> -->
+
+        <router-view></router-view>
+
     </div>
 
-    <div class="w-4/5 mx-auto">
+    <!-- <div class="w-4/5 mx-auto">
         <SalesTable />
-    </div>
+    </div> -->
 </template>
 
 <script setup>
-import { computed, onBeforeMount } from 'vue';
-// import moment from 'moment'
-// import 'moment/locale/es'
+import { computed, onBeforeMount, onMounted } from 'vue';
 import NavBar from '../../components/navbars/NavBar.vue';
 import SalesTable from '../../components/tables/SalesTable.vue';
-import StatReportes from '../../components/StatReportes.vue'
 import { useReportesStore } from '../../stores/reportes'
+import { useRouter } from 'vue-router'
 
 const store = useReportesStore()
-const reportes = store.reportes
-const reportesToday = store.reportesToday
+const router = useRouter()
 
 
-const amountTotal = computed(() => {
-    const total = reportes.reduce((total, sale) => {
-        return total + sale.total
-    }, 0)
-    console.log('Total amount ' + total);
-    return total
+
+onMounted(() => {
+    try {
+        router.push('reportes/mes')
+    } catch (error) {
+        console.log('error al redirigir a la ruta mes');
+    }
+
 })
-
-const itemsTotal = computed(() => {
-    const total = reportes.reduce((total, sale) => {
-        return total + sale.items.length
-    }, 0)
-    console.log("Total items " + total);
-    return total
-})
-
-const todayTotalAmount = computed(() => {
-    const total = reportesToday.reduce((total, sale) => {
-        return total + sale.total
-    }, 0)
-    console.log('Total amount ' + total);
-    return total
-})
-const todayTotalItems = computed(() => {
-    const total = reportesToday.reduce((total, sale) => {
-        return total + sale.items.length
-    }, 0)
-    console.log("Total items " + total);
-    return total
-})
-
-
 
 onBeforeMount(() => {
     store.fetchReportes()
     store.fetchReportesDay()
 })
+
+
 
 </script>
