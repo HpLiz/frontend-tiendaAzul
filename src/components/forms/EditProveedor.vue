@@ -41,6 +41,7 @@
                     <span class="label-text-alt text-rose-600 absolute">{{ errors.provPhone }}</span>
                 </label>
             </div>
+        </div>
 
         </div>
         <div class="divider">Informacion de la empresa</div>
