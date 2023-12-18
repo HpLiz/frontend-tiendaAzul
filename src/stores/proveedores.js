@@ -26,7 +26,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 			});
 	};
 
-	async function crearProveedor(body) {
+	async function crear(body) {
 		try {
 			const response = await axios.request({
 				headers: {
@@ -40,7 +40,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 			toast.success("Proveedor creado correctamente");
 		} catch (error) {
 			console.log(error);
-			toast.error("Error al crear el Proveedor" + error);
+			toast.error("Error al crear el Proveedor");
 		}
 	}
 
@@ -99,7 +99,7 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 		//regresr todos los metodos
 		proveedores,
 		fetchProveedores,
-		crearProveedor,
+		crear,
 		editarProveedor,
 		eliminarProveedor,
 		getProveedor,
