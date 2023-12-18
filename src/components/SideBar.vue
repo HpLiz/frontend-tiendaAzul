@@ -88,7 +88,7 @@
                         <RouterLink to="/reportes"
                             class="flex flex-row items-center transform hover:translate-x-2 transition-transform ease-in duration-200 text-gray-500 hover:text-gray-800">
                             <span class="inline-flex items-center justify-center h-12 w-12">
-                                <font-awesome-icon icon="fa-solid fa-box-archive" />
+                                <font-awesome-icon :icon="['fas', 'chart-line']" />
                             </span>
                             <span class=" font-medium">Reportes</span>
                         </RouterLink>

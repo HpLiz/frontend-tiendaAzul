@@ -14,7 +14,7 @@
         </div>
         <div class="flex justify-end gap-3">
             <button class="btn btn-primary" @click="onSubmit()" :disabled="isSubmitting">
-                {{ isSubmitting ? 'Creando...' : 'Crear' }}
+                {{ isSubmitting ? 'Modificando...' : 'Modificar' }}
             </button>
             <button class="btn" @click.prevent="clear">Limpiar</button>
 
