@@ -51,9 +51,7 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting, resetForm } = useF
 })
 
 const onSubmit = handleSubmit((values) => {
-    const token = userStore.state.token
-    catStore.addCategory(values, token)
-    console.log("categoria creada");
+    catStore.addCategory(values)
     emits('closeModal')
     clear()
 })

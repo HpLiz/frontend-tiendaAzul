@@ -84,7 +84,7 @@
                 </label>
                 <select class="select select-md select-bordered w-auto" v-model="categoryId">
                     <option disabled selected value="">Selecciona una categoria</option>
-                    <option v-for="item in categorias" :key="item.id" :value="item.id">{{ item.name }}</option>
+                    <option v-for="item in categories" :key="item.id" :value="item.id">{{ item.name }}</option>
 
                 </select>
             </div>
@@ -111,11 +111,11 @@
 import { useForm } from 'vee-validate';
 import { ref } from 'vue';
 import * as yup from 'yup';
-import { useCategoriasStore } from '../../stores/categorias'
+import { useCategoriesStore } from '../../stores/categories'
 import { useProveedoresStore } from '../../stores/proveedores'
 import { useProductsStore } from '../../stores/products'
 
-const storeCat = useCategoriasStore()
+const storeCat = useCategoriesStore()
 const storeProd = useProductsStore()
 const storeProv = useProveedoresStore()
 
@@ -124,7 +124,7 @@ const emits = defineEmits(['closeModal'])
 const categoryId = ref(0)
 const providerId = ref(0)
 
-const { categorias } = storeCat.categorias
+const { categories } = storeCat
 const { proveedores } = storeProv
 
 const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({

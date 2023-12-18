@@ -33,21 +33,21 @@ import NavBar from '../../components/navbars/NavBar.vue';
 import { useToggle } from '@vueuse/core'
 import { onBeforeMount, onMounted } from 'vue'
 import { useProductsStore } from '../../stores/products'
-import { useCategoriasStore } from '../../stores/categorias'
+import { useCategoriesStore } from '../../stores/categories'
 import { useProveedoresStore } from '../../stores/proveedores'
 import Modal from '../../components/Modal.vue';
 import ProductsTable from '../../components/tables/ProductsTable.vue';
 import CreateProductForm from '../../components/forms/CreateProductForm.vue';
 
 const store = useProductsStore()
-const catStore = useCategoriasStore()
+const catStore = useCategoriesStore()
 const provStore = useProveedoresStore()
 // const pr
 const [showCreateModal, toggleCreateModal] = useToggle()
 
 onBeforeMount(() => {
     store.fetchProductos()
-    catStore.fetchCategorias()
+    catStore.fetchCategories()
     provStore.fetchProveedores()
 })
 

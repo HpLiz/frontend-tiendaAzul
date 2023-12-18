@@ -14,7 +14,7 @@
         </div>
         <div class="flex justify-end gap-3">
             <button class="btn btn-primary" @click="onSubmit()" :disabled="isSubmitting">
-                {{ isSubmitting ? 'Creando...' : 'Crear' }}
+                {{ isSubmitting ? 'Editando...' : 'Editar' }}
             </button>
             <button class="btn" @click.prevent="clear">Limpiar</button>
 
@@ -53,12 +53,11 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting, resetForm } = useF
 const onSubmit = handleSubmit((values) => {
     const token = userStore.state.token
     const changes = {
-            name: values.name,
-            description: values.description
-        
+        name: values.name,
+        description: values.description
+
     };
-    catStore.editarCategoria( props.categoria.id , values,token)
-    console.log("categoria creada");
+    catStore.editarCategoria(props.categoria.id, values, token)
     emits('closeModal')
     clear()
 })
