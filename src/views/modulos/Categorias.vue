@@ -28,7 +28,7 @@
         </div>
 
         <div class="flex flex-col justify-center h-full w-full overflow-x-auto  my-12">
-            <TableCategories :categories="catStore.categories" />
+            <TableCategories :categories="store.categories" />
         </div>
     </div>
 </template>
@@ -40,20 +40,14 @@ import CreateCategory from '../../components/forms/CreateCategory.vue';
 import Modal from '@/components/Modal.vue'
 import { useCategoriesStore } from '../../stores/categories'
 import { useToggle } from '@vueuse/core'
-import { onMounted, ref, computed, onBeforeMount } from 'vue';
+import { onBeforeMount } from 'vue';
 
+const store = useCategoriesStore()
 
-const catStore = useCategoriesStore()
-
-
-
-// const showCreateModal = ref(false)
 const [showCreateModal, toggleModal] = useToggle()
 
-
-
 onBeforeMount(() => {
-    catStore.fetchCategories()
+    store.fetchCategories()
 })
 
 </script>

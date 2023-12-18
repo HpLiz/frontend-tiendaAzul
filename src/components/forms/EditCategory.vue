@@ -14,9 +14,8 @@
         </div>
         <div class="flex justify-end gap-3">
             <button class="btn btn-primary" @click="onSubmit()" :disabled="isSubmitting">
-                {{ isSubmitting ? 'Editando...' : 'Editar' }}
+                {{ isSubmitting ? 'Editando...' : 'Guardar' }}
             </button>
-            <button class="btn" @click.prevent="clear">Limpiar</button>
 
         </div>
 
@@ -50,36 +49,19 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting, resetForm } = useF
     }
 })
 
-const onSubmit = handleSubmit((values) => {
-    const token = userStore.state.token
-    const changes = {
-        name: values.name,
-        description: values.description
-
-    };
-    catStore.editarCategoria(props.categoria.id, values, token)
-    emits('closeModal')
-    clear()
-})
-
 const name = defineInputBinds('name')
 const description = defineInputBinds('description')
 
-const clear = () => {
-    resetForm({
-        touched: {
-            title: false,
-            description: false
-        },
-        errors: {
-            title: 'Title is required',
-            description: "Task description is required"
-        },
-        values: {
-            title: '',
-            description: '',
-        },
-    })
-}
+const onSubmit = handleSubmit((values) => {
+    const changes = {
+        ...values
+    };
+    catStore.editarCategoria(props.categoria.id, changes)
+    // catStore.fetchCategories()
+    emits('closeModal')
+})
+
+
+
 
 </script>

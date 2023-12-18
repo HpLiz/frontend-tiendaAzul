@@ -6,7 +6,26 @@ import { useToast } from "vue-toastification";
 export const useCategoriesStore = defineStore("categories", () => {
 	const toast = useToast();
 	const token = $cookies.get("user")?.token;
-	const categories = ref([]);
+	let categories = ref([]);
+
+	const fetchCategories = () => {
+		axios
+			.request({
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+				method: "GET",
+				url: "/api/categories",
+			})
+			.then((res) => {
+				// console.log(res.data);
+				categories.value = res.data?.categorias;
+			})
+			.catch((error) => {
+				console.log(error);
+				toast.error("Error al cargar las categorias");
+			});
+	};
 
 	function addCategory(data) {
 		axios
@@ -39,38 +58,21 @@ export const useCategoriesStore = defineStore("categories", () => {
 			console.log(error);
 		}
 	}
-	function fetchCategories() {
+	function editarCategoria(id, values) {
 		axios
-			.request({
+			.patch(`/api/categories/${id}`, values, {
 				headers: {
 					Authorization: `Bearer ${token}`,
 				},
-				method: "GET",
-				url: "/api/categories",
 			})
 			.then((res) => {
-				// console.log(res.data);
-				categories.value = res.data?.categorias;
+				fetchCategories();
+				toast.success("La Categoria se ha actualizado correctamente");
 			})
-			.catch((error) => {
-				console.log(error);
-				toast.error("Error al cargar las categorias");
+			.catch((err) => {
+				console.log(err);
+				toast.error("Error al actualizar la categoria");
 			});
-	}
-
-	async function editarCategoria(id, values) {
-		try {
-			const response = await axios.patch(`/api/categories/${id}`, values, {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			});
-			fetchCategories();
-			toast.success("Categoria actualizada correctamente");
-		} catch (error) {
-			toast.error("Error al actualizar las categorias");
-			console.log(error);
-		}
 	}
 
 	async function getCategoryById(id) {
@@ -92,14 +94,10 @@ export const useCategoriesStore = defineStore("categories", () => {
 
 	return {
 		categories,
+		fetchCategories,
 		addCategory,
 		editarCategoria,
-		fetchCategories,
 		deleteCategory,
 		getCategoryById,
 	};
 });
-
-if (import.meta.hot) {
-	import.meta.hot.accept(acceptHMRUpdate(useCategoriesStore, import.meta.hot));
-}
