@@ -1,11 +1,10 @@
 
 <template>
     <form class="mt-3 w-full">
-        <div class="divider">Informacion del Contacto</div>
-        <div class="grid grid-cols-1 gap-x-4 mt-4 sm:grid-cols-2">
-        <div class="divider">Información del Proveedor</div>
+        
+        <div class="divider">Información del contacto</div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
-            <div>
+             <div>
                 <label class="font-bold pr-4">
                     Nombre(s)*
                 </label>
@@ -43,7 +42,6 @@
             </div>
         </div>
 
-        </div>
         <div class="divider">Informacion de la empresa</div>
         <div class="grid grid-cols-1 gap-x-4  mt-4 sm:grid-cols-2">
             <div class="col-span-2">
