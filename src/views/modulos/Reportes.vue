@@ -13,26 +13,18 @@
         </div>
 
         <router-view></router-view>
-        <!--
-        <div class="">
-            <h3 class="text-primary text-3xl text-center font-extrabold">Hoy</h3>
-            <StatReportes month="Diciembre 15, 2023" :articulos="todayTotalItems" :total="todayTotalAmount" />
-        </div> -->
-        <!-- <div class="divider divider-vertical"></div> -->
+
     </div>
 
     <div class="w-4/5 mx-auto">
         <SalesTable />
     </div>
-    <!-- <Bubble></Bubble> -->
 </template>
 
 <script setup>
 import { computed, onBeforeMount, onMounted } from 'vue';
-import Bubble from '../../components/graficos/Bubble.vue'
 import NavBar from '../../components/navbars/NavBar.vue';
 import SalesTable from '../../components/tables/SalesTable.vue';
-import StatReportes from '../../components/StatReportes.vue'
 import { useReportesStore } from '../../stores/reportes'
 import { useRouter } from 'vue-router'
 
@@ -42,12 +34,19 @@ const router = useRouter()
 
 
 onMounted(() => {
-    router.push('/reportes/mes')
+    try {
+        router.push('reportes/mes')
+    } catch (error) {
+        console.log('error al redirigir a la ruta mes');
+    }
+
 })
 
 onBeforeMount(() => {
     store.fetchReportes()
     store.fetchReportesDay()
 })
+
+
 
 </script>

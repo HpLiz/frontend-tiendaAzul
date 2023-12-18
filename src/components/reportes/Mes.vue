@@ -5,7 +5,7 @@
             <StatReportes month="Diciembre 2023" :articulos="itemsTotal" :total="amountTotal" />
         </div>
         <div class="w-4/5">
-            grafica
+            <BarMes />
         </div>
     </div>
 </template>
@@ -14,6 +14,7 @@
 import StatReportes from '@/components/StatReportes.vue'
 import { useReportesStore } from '@/stores/reportes'
 import { computed } from 'vue';
+import BarMes from '../graficos/BarMes.vue';
 
 const store = useReportesStore()
 const reportes = store.reportes

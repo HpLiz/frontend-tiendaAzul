@@ -5,7 +5,7 @@
 
         </div>
         <div class="w-4/5">
-            grafica
+            <!-- <BarDia /> -->
         </div>
     </div>
 </template>
@@ -15,6 +15,7 @@
 import StatReportes from '@/components/StatReportes.vue'
 import { useReportesStore } from '@/stores/reportes'
 import { computed } from 'vue';
+import BarDia from '../graficos/BarDia.vue';
 
 const store = useReportesStore()
 const reportesToday = store.reportesToday

@@ -74,14 +74,14 @@ const routes = [
 				component: () => import("../views/modulos/Reportes.vue"),
 				children: [
 					{
-						path: "dia",
-						name: "Dia",
-						component: () => import("../components/reportes/Dia.vue"),
-					},
-					{
 						path: "mes",
 						name: "Mes",
 						component: () => import("../components/reportes/Mes.vue"),
+					},
+					{
+						path: "dia",
+						name: "Dia",
+						component: () => import("../components/reportes/Dia.vue"),
 					},
 				],
 			},
