@@ -1,40 +1,93 @@
+
 <template>
     <form class="mt-3 w-full">
-        <div class="divider">Informacion del Proveedor</div>
-        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+        <div class="divider">Informacion del Contacto</div>
+        <div class="grid grid-cols-1 gap-x-4 mt-4 sm:grid-cols-2">
             <div>
                 <label class="font-bold pr-4">
                     Nombre(s)*
                 </label>
-                <input v-bind="name" type="text" class="input input-bordered   input-sm uppercase w-full">
+                <input v-bind="provFirstname" type="text" class="input-bordered input input-sm uppercase w-full">
                 <label class="label h-6 static">
-                    <span class="label-text-alt text-rose-600 absolute">{{ errors.name }}</span>
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.provFirstname }}</span>
                 </label>
             </div>
             <div>
                 <label class="font-bold pr-4">
-                    Correo Electronico*
+                    Apellidos*
                 </label>
-                <input type="email" class="input  input-bordered  input-sm w-full" v-bind="email">
+                <input v-bind="provLastname" type="text" class="input-bordered input input-sm uppercase w-full">
                 <label class="label h-6 static">
-                    <span class="label-text-alt text-rose-600 absolute">{{ errors.email }}</span>
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.provLastname }}</span>
+                </label>
+            </div>
+            <div>
+                <label class="font-bold pr-4">
+                    Email*
+                </label>
+                <input type="email" class="input-bordered input input-sm w-full" v-bind="provEmail">
+                <label class="label h-6 static">
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.provEmail }}</span>
                 </label>
             </div>
             <div>
                 <label class="font-bold pr-4">
                     Telefono
                 </label>
-                <input type="text" class="input  input-bordered  input-sm w-full" v-bind="phone">
+                <input type="text" class="input input-bordered  input-sm w-full" v-bind="provPhone">
                 <label class="label h-6 static">
-                    <span class="label-text-alt text-rose-600 absolute">{{ errors.phone }}</span>
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.provPhone }}</span>
                 </label>
             </div>
+
+        </div>
+        <div class="divider">Informacion de la empresa</div>
+        <div class="grid grid-cols-1 gap-x-4  mt-4 sm:grid-cols-2">
+            <div class="col-span-2">
+                <label class="font-bold pr-4">
+                    Nombre de la empresa*
+                </label>
+                <input v-bind="companyName" type="text" class="input-bordered input input-sm uppercase w-full">
+                <label class="label h-6 static">
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.companyName }}</span>
+                </label>
+            </div>
+            <div class="col-span-2">
+                <label class="font-bold pr-4">
+                    Direccion
+                </label>
+                <input v-bind="companyAddress" type="text" class="input-bordered input input-sm  w-full">
+                <label class="label h-6 static">
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.companyAddress }}</span>
+                </label>
+            </div>
+            <div>
+                <label class="font-bold pr-4">
+                    Email*
+                </label>
+                <input type="email" class="input-bordered input input-sm w-full" v-bind="companyEmail">
+                <label class="label h-6 static">
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.companyEmail }}</span>
+                </label>
+            </div>
+            <div>
+                <label class="font-bold pr-4">
+                    Telefono
+                </label>
+                <input type="text" class="input input-bordered  input-sm w-full" v-bind="companyPhone">
+                <label class="label h-6 static">
+                    <span class="label-text-alt text-rose-600 absolute">{{ errors.companyPhone }}</span>
+                </label>
+            </div>
+        </div>
+        <div>
             <div class="flex justify-end">
                 <button class="btn btn-md btn-primary" @click="onSubmit()" :disabled="isSubmitting">
-                    {{ isSubmitting ? "Actualizando..." : "Actualizar" }}
+                    {{ isSubmitting ? "Guardando..." : "Guardar cambios" }}
                 </button>
             </div>
         </div>
+
 
     </form>
 </template>
@@ -51,32 +104,43 @@ const props = defineProps(['proveedor'])
 
 const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({
     validationSchema: yup.object({
-        name: yup.string().min(3).required("Este campo es obligatorio"),
-        email: yup.string().email("Debe ser un email valido").required("El email es requerido"),
-        phone: yup.number("Debe ser un numero de telefono"),
-        }),
+        provFirstname: yup.string().min(3).required("Este campo es obligatorio"),
+        provLastname: yup.string().min(3).required("Este campo es obligatorio"),
+        provPhone: yup.number("Debe ser un numero de telefono valido"),
+        provEmail: yup.string().email("Debe ser un email valido").required(),
+        companyName: yup.string().min(1).required("Este campo es obligatorio"),
+        companyAddress: yup.string(),
+        companyPhone: yup.number("Debe ser un numero de telefono valido"),
+        companyEmail: yup.string().email("Debe ser un email valido").required(),
+
+    }),
     initialValues: {
-        name: props.proveedor.name,
-        email: props.proveedor.email,
-        phone: props.proveedor.phone
+        provFirstname: props.proveedor.provFirstname,
+        provLastname: props.proveedor.provLastname,
+        provPhone: props.proveedor.provPhone,
+        provEmail: props.proveedor.provEmail,
+        companyName: props.proveedor.companyName,
+        companyAddress: props.proveedor.companyAddress,
+        companyPhone: props.proveedor.companyPhone,
+        companyEmail: props.proveedor.companyEmail,
     }
 
 })
 
-const name = defineInputBinds("name")
-const email = defineInputBinds("email")
-const phone = defineInputBinds("phone")
+const provFirstname = defineInputBinds("provFirstname")
+const provLastname = defineInputBinds("provLastname")
+const provPhone = defineInputBinds("provPhone")
+const provEmail = defineInputBinds("provEmail")
+const companyName = defineInputBinds("companyName")
+const companyAddress = defineInputBinds("companyAddress")
+const companyPhone = defineInputBinds("companyPhone")
+const companyEmail = defineInputBinds("companyEmail")
+
 
 const onSubmit = handleSubmit(async (values) => {
-    const body = {
-        name: values.name.toUpperCase(),
-        phone: values.phone,
-        email: values.email
-    };
-
-    // console.log(body);
+    await store.editarProveedor(props.proveedor.id, values)
+    store.fetchProveedores()
     emits('closeModal')
-    await store.editarProveedor(props.proveedor.id , body)
 
 })
 

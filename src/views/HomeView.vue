@@ -14,10 +14,26 @@ import SideBar from '../components/SideBar.vue';
 
 import { useRouter } from 'vue-router'
 
+import { useCategoriesStore } from '../stores/categories'
+import { useEmpleadosStore } from '@/stores/empleados'
+import { useProveedoresStore } from '@/stores/proveedores'
+import { useReportesStore } from '@/stores/reportes'
+
+const { fetchCategories } = useCategoriesStore()
+const { fetchEmpleados } = useEmpleadosStore()
+const { fetchProveedores } = useProveedoresStore()
+const { fetchReportes } = useReportesStore()
+
 const router = useRouter();
 
 onMounted(() => {
     router.push('/punto-venta')
+    fetchCategories()
+    fetchEmpleados()
+    fetchProveedores()
+    fetchReportes()
 })
+
+
 
 </script>

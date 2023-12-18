@@ -103,7 +103,6 @@ export const useProveedoresStore = defineStore("proveedores", () => {
 		editarProveedor,
 		eliminarProveedor,
 		getProveedor,
-		crear,
 	};
 });
 /*

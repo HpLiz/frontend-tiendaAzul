@@ -75,7 +75,6 @@
                                 <div class="font-bold capitalize badge badge-ghost">{{ prov.companyName }} </div>
                                 <div class="text-sm opacity-80">{{ prov.companyEmail }} </div>
                                 <div class="text-sm opacity-80">{{ prov.companyPhone }} </div>
-
                             </div>
                         </div>
                     </td>
@@ -95,10 +94,10 @@
                     </td>
                     <th>
                         <div>
-                            <button class="btn btn-xs bg-rose-500 text-white">
+                            <button class="btn btn-xs bg-rose-500 text-white" @click="seleccionarEliminar(prov.id)">
                                 Eliminar
                             </button>
-                            <button class="btn btn-xs bg-sky-500 text-white">
+                            <button class="btn btn-xs bg-sky-500 text-white" @click="seleccionarEdit(prov.id)">
                                 Editar
                             </button>
                         </div>

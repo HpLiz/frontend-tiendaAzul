@@ -139,13 +139,7 @@ const companyEmail = defineInputBinds("companyEmail")
 
 
 const onSubmit = handleSubmit(async (values) => {
-    // const body = {
-    //     name: values.name.toUpperCase(),
-    //     phone: values.phone,
-    //     email: values.email
-    // };
 
-    // console.log(body);
     emits('closeModal')
     await store.crearProveedor(values)
 
