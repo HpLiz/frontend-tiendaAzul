@@ -1,5 +1,5 @@
 <template>
-    <form >
+    <form>
         <div class="divider">Informacion del empleado</div>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
@@ -160,7 +160,7 @@ const password = defineInputBinds("password")
 
 const onSubmit = handleSubmit(async (values) => {
     const body = {
-        fullname: values.names.toUpperCase() + " " + values.lastnames.toUpperCase(),
+        fullname: values.names + " " + values.lastnames,
         curp: values.curp.toLowerCase(),
         rfc: values.rfc.toUpperCase(),
         phone: values.phone,

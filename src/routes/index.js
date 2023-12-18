@@ -72,6 +72,9 @@ const routes = [
 				path: "reportes",
 				name: "Reportes",
 				component: () => import("../views/modulos/Reportes.vue"),
+				meta: {
+					roles: ["admin"],
+				},
 				children: [
 					{
 						path: "mes",
