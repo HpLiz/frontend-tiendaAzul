@@ -1,11 +1,11 @@
 <template>
-    <div class="w-full flex gap-x-4 mt-4">
+    <div class="w-full flex gap-x-4 mt-4 justify-center">
         <div class="w-1/5">
-            <StatReportes month="Diciembre 15, 2023" :productos="todayProductsSold" :total="todayTotalAmount"
+            <StatReportes month="Diciembre 18, 2023" :productos="todayProductsSold" :total="todayTotalAmount"
                 :articulos="todayTotalProductsSOld" />
 
         </div>
-        <div class="w-4/5">
+        <div class="w-3/5">
             <!-- <BarDia /> -->
         </div>
 
