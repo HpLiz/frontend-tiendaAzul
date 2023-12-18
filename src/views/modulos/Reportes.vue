@@ -16,9 +16,9 @@
 
     </div>
 
-    <div class="w-4/5 mx-auto">
+    <!-- <div class="w-4/5 mx-auto">
         <SalesTable />
-    </div>
+    </div> -->
 </template>
 
 <script setup>

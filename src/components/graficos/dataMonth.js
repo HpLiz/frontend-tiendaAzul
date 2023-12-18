@@ -55,7 +55,7 @@ export async function data() {
 		};
 
 		console.log("objeto", objeto);
-		return objeto;
+		// return objeto;
 	} catch (error) {
 		console.log(error);
 	}

@@ -9,6 +9,11 @@
         </div>
 
         <div class="stat">
+            <div class="stat-title">Productos Vendidos</div>
+            <div class="stat-value">{{ productos }}</div>
+            <div class="stat-desc">{{ month }}</div>
+        </div>
+        <div class="stat">
             <div class="stat-title">Total Vendido</div>
             <div class="stat-value">${{ total.toFixed(2) }}</div>
             <div class="stat-desc">{{ month }} </div>
@@ -18,5 +23,5 @@
 
 
 <script setup>
-const props = defineProps(['total', 'articulos', 'month'])
+const props = defineProps(['total', 'articulos', 'month', 'productos'])
 </script>
