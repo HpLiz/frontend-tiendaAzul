@@ -94,7 +94,7 @@
                 </label>
                 <select class="select select-md select-bordered w-full" v-model="providerId">
                     <option disabled selected value="">Selecciona un proveedor</option>
-                    <option v-for="item in proveedores" :key="item.id" :value="item.id">{{ item.name }}</option>
+                    <option v-for="item in proveedores" :key="item.id" :value="item.id">{{ item.companyName }}</option>
 
                 </select>
             </div>
@@ -111,11 +111,11 @@
 import { useForm } from 'vee-validate';
 import { ref } from 'vue';
 import * as yup from 'yup';
-import { useCategoriasStore } from '../../stores/categorias'
+import { useCategoriesStore } from '../../stores/categories'
 import { useProveedoresStore } from '../../stores/proveedores'
 import { useProductsStore } from '../../stores/products'
 
-const storeCat = useCategoriasStore()
+const storeCat = useCategoriesStore()
 const storeProd = useProductsStore()
 const storeProv = useProveedoresStore()
 
@@ -125,7 +125,7 @@ const props = defineProps(['producto'])
 const categoryId = ref(props.producto.categoryId)
 const providerId = ref(props.producto.providerId)
 
-const { categorias } = storeCat.categorias
+const { categories } = storeCat
 const { proveedores } = storeProv
 
 const { errors, defineInputBinds, isSubmitting, handleSubmit } = useForm({

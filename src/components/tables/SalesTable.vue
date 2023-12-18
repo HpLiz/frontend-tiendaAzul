@@ -1,5 +1,5 @@
 <template>
-    <div class="overflow-x-auto h-full">
+    <div class="overflow-y-auto table-xs">
         <table class="table">
             <!-- head -->
             <thead>
@@ -56,9 +56,11 @@ import { useToggle } from '@vueuse/core'
 import { useVentaStore } from '../../stores/venta'
 import { es } from 'date-fns/locale'
 import { useReportesStore } from '../../stores/reportes'
+
 const reportesStore = useReportesStore()
 const { ventas, fetchVentas } = useVentaStore()
 const [showTicketModal, toggleTicketModal] = useToggle()
+
 const showDetails = async (id) => {
     // producto.value = await store.getProductoById(id)
     // console.log(producto.value);

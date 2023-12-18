@@ -35,7 +35,7 @@
         </template>
     </Modal>
 
-    <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+    <!-- <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
         <div class="card  w-72 h-52 bg-base-200 shadow-xl" v-for="provider in providers" :key="provider.id">
             <div class="card-body">
                 <h2 class="card-title">
@@ -53,6 +53,69 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    <div class="overflow-x-auto">
+        <table class="table">
+            <!-- head -->
+            <thead>
+                <tr>
+                    <th>Empresa</th>
+                    <th>Contacto</th>
+                    <th>Direccion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- row 1 -->
+                <tr v-for="prov in providers" :key="prov.id">
+                    <td>
+                        <div class="flex items-center gap-3">
+
+                            <div class="flex flex-col gap-1">
+                                <div class="font-bold capitalize badge badge-ghost">{{ prov.companyName }} </div>
+                                <div class="text-sm opacity-80">{{ prov.companyEmail }} </div>
+                                <div class="text-sm opacity-80">{{ prov.companyPhone }} </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="flex items-center gap-3">
+
+                            <div class="flex flex-col gap-1">
+                                <div class="font-bold capitalize">{{ prov.provFirstname }} {{ prov.provLastname }} </div>
+                                <div class="text-sm opacity-80">{{ prov.provEmail }} </div>
+                                <div class="text-sm opacity-80">{{ prov.provPhone }} </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-sm truncate">{{ prov.companyAddress }} </div>
+
+                    </td>
+                    <th>
+                        <div>
+                            <button class="btn btn-xs bg-rose-500 text-white" @click="seleccionarEliminar(prov.id)">
+                                Eliminar
+                            </button>
+                            <button class="btn btn-xs bg-sky-500 text-white" @click="seleccionarEdit(prov.id)">
+                                Editar
+                            </button>
+                        </div>
+                    </th>
+                </tr>
+
+            </tbody>
+            <!-- foot -->
+            <tfoot>
+                <tr>
+                    <th>Empresa</th>
+                    <th>Contacto</th>
+                    <th>Direccion</th>
+                    <th>Acciones</th>
+                </tr>
+            </tfoot>
+
+        </table>
     </div>
 </template>
 

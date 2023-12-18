@@ -53,12 +53,11 @@ const { errors, handleSubmit, defineInputBinds, isSubmitting, resetForm } = useF
 const onSubmit = handleSubmit((values) => {
     const token = userStore.state.token
     const changes = {
-            name: values.name,
-            description: values.description
-        
+        name: values.name,
+        description: values.description
+
     };
-    catStore.editarCategoria( props.categoria.id , values,token)
-    console.log("categoria creada");
+    catStore.editarCategoria(props.categoria.id, values, token)
     emits('closeModal')
     clear()
 })

@@ -28,9 +28,7 @@
         </div>
 
         <div class="flex flex-col justify-center h-full w-full overflow-x-auto  my-12">
-            <TableCategories :categories="categories" />
-
-
+            <TableCategories :categories="catStore.categories" />
         </div>
     </div>
 </template>
@@ -40,43 +38,22 @@ import NavBar from '@/components/navbars/NavBar.vue';
 import TableCategories from '../../components/tables/Categories.vue'
 import CreateCategory from '../../components/forms/CreateCategory.vue';
 import Modal from '@/components/Modal.vue'
-import { useUserStore } from '../../stores/userStore'
 import { useCategoriesStore } from '../../stores/categories'
 import { useToggle } from '@vueuse/core'
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, onBeforeMount } from 'vue';
 
 
-const userStore = useUserStore()
 const catStore = useCategoriesStore()
 
-const currentPage = ref(0)
 
-const nextPage = () => {
-    if (currentPage.value * 10 < categories.value.length) {
-        currentPage.value += 1;
-        catStore.fetchCategories(userStore.state.token, currentPage.value * 5);
-    }
-}
 
-const prevPage = () => {
-    if (currentPage.value >= 1) {
-        currentPage.value -= 1;
-        catStore.fetchCategories(userStore.state.token, currentPage.value * 5);
-    }
-}
 // const showCreateModal = ref(false)
 const [showCreateModal, toggleModal] = useToggle()
 
-const getCategories = computed(() => {
-    return catStore.getCategories
-})
 
-const categories = computed(() => {
-    return catStore.categories
-})
 
-onMounted(async () => {
-    await catStore.fetchCategories(userStore.state.token, currentPage.value)
+onBeforeMount(() => {
+    catStore.fetchCategories()
 })
 
 </script>
